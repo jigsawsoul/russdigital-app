@@ -1,9 +1,15 @@
-// Global styles
-// These styles are available on all pages.
-// If a component has it's own styles, they can be found within the component's respective directory.
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import 'breakpoints';
-@import 'css-variables';
-@import 'base';
-@import 'blocks';
-@import 'utilities';
+body {
+    @apply antialiased text-[#0A0C00] mt-[88px] lg:mt-[106px];
+}
+
+// #nprogress .bar {
+//     background: #E3FF04 !important;
+// }
+
+#nprogress .spinner-icon {
+    @apply hidden lg:block;
+}

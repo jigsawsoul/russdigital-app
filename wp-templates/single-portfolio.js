@@ -9,7 +9,7 @@ import {
   Footer,
   NavigationMenu,
   ContactSection,
-  Hero,
+  Breadcrumbs,
 } from "../components";
 
 export default function Component(props) {
@@ -22,7 +22,9 @@ export default function Component(props) {
     props?.data?.generalSettings;
   const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
   const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
-  const { title, featuredImage } = props?.data?.page ?? { title: "" };
+  const { title, featuredImage, seo } = props?.data?.portfolio ?? { title: "" };
+
+  // console.log(props.data);
 
   return (
     <>
@@ -31,7 +33,7 @@ export default function Component(props) {
       <div className="flex flex-col min-h-screen">
         <Header menuItems={primaryMenu} />
         <Main className="flex-grow">
-          <Hero title={title} image={featuredImage?.node?.sourceUrl} />
+          <Breadcrumbs items={seo?.breadcrumbs} />
         </Main>
         <ContactSection />
         <Footer title={siteTitle} menuItems={footerMenu} />
@@ -52,17 +54,19 @@ Component.variables = ({ databaseId }, ctx) => {
 Component.query = gql`
   ${BlogInfoFragment}
   ${NavigationMenu.fragments.entry}
-  ${Hero.fragments.entry}
-  query GetPageData(
+  ${Breadcrumbs.fragments.entry}
+  query GetProfolioData(
     $databaseId: ID!
     $headerLocation: MenuLocationEnum
     $footerLocation: MenuLocationEnum
     $asPreview: Boolean = false
   ) {
-    page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
+    portfolio(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
       title
       content
-      ...HeroFragment
+      seo {
+        ...BreadcrumbsFragment
+      }
     }
     generalSettings {
       ...BlogInfoFragment

@@ -1,5 +1,5 @@
-const { withFaust, getWpHostname } = require('@faustwp/core');
-const { createSecureHeaders } = require('next-secure-headers');
+const { withFaust, getWpHostname } = require("@faustwp/core");
+const { createSecureHeaders } = require("next-secure-headers");
 
 /**
  * @type {import('next').NextConfig}
@@ -7,18 +7,23 @@ const { createSecureHeaders } = require('next-secure-headers');
 module.exports = withFaust({
   reactStrictMode: true,
   sassOptions: {
-    includePaths: ['node_modules'],
+    includePaths: ["node_modules"],
   },
   images: {
-    domains: [getWpHostname()],
+    domains: [getWpHostname(), "russdigital.co.uk"],
   },
   i18n: {
-    locales: ['en'],
-    defaultLocale: 'en',
+    locales: ["en"],
+    defaultLocale: "en",
   },
   async headers() {
-    return [{ source: '/:path*', headers: createSecureHeaders({
-      xssProtection: false
-    }) }];
+    return [
+      {
+        source: "/:path*",
+        headers: createSecureHeaders({
+          xssProtection: false,
+        }),
+      },
+    ];
   },
 });

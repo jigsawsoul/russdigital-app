@@ -10,6 +10,7 @@ import {
   NavigationMenu,
   ContactSection,
   Hero,
+  Portfolio,
 } from "../components";
 
 export default function Component(props) {
@@ -23,6 +24,7 @@ export default function Component(props) {
   const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
   const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
   const { title, featuredImage } = props?.data?.page ?? { title: "" };
+  const portfolioItems = props?.data?.allPortfolio?.nodes ?? [];
 
   return (
     <>
@@ -32,6 +34,7 @@ export default function Component(props) {
         <Header menuItems={primaryMenu} />
         <Main className="flex-grow">
           <Hero title={title} image={featuredImage?.node?.sourceUrl} />
+          <Portfolio items={portfolioItems}></Portfolio>
         </Main>
         <ContactSection />
         <Footer title={siteTitle} menuItems={footerMenu} />
@@ -53,6 +56,7 @@ Component.query = gql`
   ${BlogInfoFragment}
   ${NavigationMenu.fragments.entry}
   ${Hero.fragments.entry}
+  ${Portfolio.fragments.entry}
   query GetPageData(
     $databaseId: ID!
     $headerLocation: MenuLocationEnum
@@ -63,6 +67,9 @@ Component.query = gql`
       title
       content
       ...HeroFragment
+    }
+    allPortfolio {
+      ...PortfolioFragment
     }
     generalSettings {
       ...BlogInfoFragment
