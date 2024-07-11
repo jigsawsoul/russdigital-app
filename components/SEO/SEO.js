@@ -34,13 +34,6 @@ export default function SEO({ title, description, imageUrl, url }) {
           rel="stylesheet"
         ></link>
 
-        <script
-          src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"
-          integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g=="
-          crossOrigin="anonymous"
-          referrerpolicy="no-referrer"
-        ></script>
-
         <meta property="og:type" content="website" />
         <meta property="twitter:card" content="summary_large_image" />
 
