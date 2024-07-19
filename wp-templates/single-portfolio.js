@@ -1,6 +1,7 @@
 import { gql } from "@apollo/client";
 import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
+import { SeoMetaFragment } from "../fragments/SeoMeta";
 import {
   SEO,
   MobileMenu,
@@ -10,6 +11,9 @@ import {
   NavigationMenu,
   ContactSection,
   Breadcrumbs,
+  SlickSlider,
+  Container,
+  Content,
 } from "../components";
 
 export default function Component(props) {
@@ -22,18 +26,43 @@ export default function Component(props) {
     props?.data?.generalSettings;
   const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
   const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
-  const { title, featuredImage, seo } = props?.data?.portfolio ?? { title: "" };
-
-  // console.log(props.data);
+  const { title, content, seo } = props?.data?.portfolio ?? {
+    title: "",
+  };
 
   return (
     <>
-      <SEO title={siteTitle} description={siteDescription} />
+      <SEO title={seo?.title} description={siteDescription} />
       <MobileMenu menuItems={primaryMenu} />
       <div className="flex flex-col min-h-screen">
         <Header menuItems={primaryMenu} />
         <Main className="flex-grow">
           <Breadcrumbs items={seo?.breadcrumbs} />
+          <Container>
+            <div className="py-10 lg-py-14 xl:py-28">
+              <SlickSlider />
+              <div className="py-10 flex flex-col lg:flex-row justify-between flex-wrap">
+                <div className="col-lg-8 lg:w-8/12">
+                  <h1 className="font-title mb-4 text-3xl md:text-4xl lg:text-6xl font-semibold">
+                    {title}
+                  </h1>
+                  <Content content={content} />
+                </div>
+                <div className="lg:w-4/12 xl:w-3/12">
+                  <dl>
+                    <dt className="text-lg mb-1">Service:</dt>
+                    <dd className="font-title font-semibold mb-8">
+                      DEVELOPMENT
+                    </dd>
+                    <dt className="text-lg mb-1">Software:</dt>
+                    <dd className="font-title font-semibold mb-8">
+                      WORDPRESS, FIGMA
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </Container>
         </Main>
         <ContactSection />
         <Footer title={siteTitle} menuItems={footerMenu} />
@@ -53,8 +82,8 @@ Component.variables = ({ databaseId }, ctx) => {
 
 Component.query = gql`
   ${BlogInfoFragment}
+  ${SeoMetaFragment}
   ${NavigationMenu.fragments.entry}
-  ${Breadcrumbs.fragments.entry}
   query GetProfolioData(
     $databaseId: ID!
     $headerLocation: MenuLocationEnum
@@ -65,7 +94,7 @@ Component.query = gql`
       title
       content
       seo {
-        ...BreadcrumbsFragment
+        ...SeoMetaFragment
       }
     }
     generalSettings {

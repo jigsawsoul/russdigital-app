@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function PortfolioItem({ item }) {
   return (
-    <div className="wow animated bounceInUp">
+    <div className="">
       <Link href={item.uri ?? ""}>
         <a className="block">
           {item.featuredImage && item.featuredImage.node && (
@@ -14,7 +14,7 @@ export default function PortfolioItem({ item }) {
           )}
         </a>
       </Link>
-      <div className="pt-5lg:pt-7">
+      <div className="pt-5 lg:pt-7">
         <h3 className="mb-2 lg:mb-4 font-title font-semibold text-2xl lg:text-4xl">
           <Link href={item.uri ?? ""}>
             <a>{item.title}</a>

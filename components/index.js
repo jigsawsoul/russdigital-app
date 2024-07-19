@@ -23,3 +23,5 @@ export { Button } from "./Button";
 export { Portfolio } from "./Portfolio";
 export { PortfolioItem } from "./PortfolioItem";
 export { Breadcrumbs } from "./Breadcrumbs";
+export { SlickSlider } from "./SlickSlider";
+export { Content } from "./Content";

@@ -1,5 +1,4 @@
 import React from "react";
-import { gql } from "@apollo/client";
 import Link from "next/link";
 
 export default function Breadcrumbs({ items }) {
@@ -35,14 +34,3 @@ export default function Breadcrumbs({ items }) {
     </div>
   );
 }
-
-Breadcrumbs.fragments = {
-  entry: gql`
-    fragment BreadcrumbsFragment on PostTypeSEO {
-      breadcrumbs {
-        text
-        url
-      }
-    }
-  `,
-};

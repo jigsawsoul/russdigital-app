@@ -87,7 +87,7 @@ export default function MobileMenu({ menuItems }) {
     <div
       onClick={handleBackgroundClick}
       className={classNames(
-        "fixed bg-black/60 inset-0 transition-all duration-400 z-50",
+        "fixed bg-black/60 inset-0 transition-all duration-400 z-[9999]",
         {
           "opacity-0 invisible": !isNavShown,
           "opacity-1 visible": isNavShown,

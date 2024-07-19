@@ -16,7 +16,7 @@ export default function Header({ menuItems }) {
   const { isNavShown, toggleNav } = useGlobalStore();
 
   return (
-    <header className="fixed top-0 right-0 left-0 z-10 bg-white">
+    <header className="fixed top-0 right-0 left-0 z-50 bg-white">
       <div className="px-4 lg:px-10">
         <div className="flex justify-between items-center row h-[88px] lg:h-[106px]">
           <Link href="/">
