@@ -62,7 +62,6 @@ Component.query = gql`
   query GetPageData(
     $databaseId: ID!
     $headerLocation: MenuLocationEnum
-    $footerLocation: MenuLocationEnum
     $asPreview: Boolean = false
   ) {
     page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
