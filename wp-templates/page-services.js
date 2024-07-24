@@ -1,7 +1,6 @@
 import { gql } from "@apollo/client";
 import * as MENUS from "../constants/menus";
 import { SeoMetaFragment } from "../fragments/SeoMeta";
-import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import {
   SEO,
   MobileMenu,
@@ -48,17 +47,15 @@ Component.variables = ({ databaseId }, ctx) => {
   return {
     databaseId,
     headerLocation: MENUS.PRIMARY_LOCATION,
-    footerLocation: MENUS.FOOTER_LOCATION,
     asPreview: ctx?.asPreview,
   };
 };
 
 Component.query = gql`
   ${SeoMetaFragment}
-  ${BlogInfoFragment}
-  ${NavigationMenu.fragments.entry}
   ${Hero.fragments.entry}
   ${Services.fragments.entry}
+  ${NavigationMenu.fragments.entry}
   query GetPageData(
     $databaseId: ID!
     $headerLocation: MenuLocationEnum
