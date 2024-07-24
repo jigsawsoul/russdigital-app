@@ -1,11 +1,12 @@
-import category from "./category";
 import tag from "./tag";
-import frontPage from "./front-page";
-import pageServices from "./page-services";
-import pagePortfolio from "./page-portfolio";
-import singlePortfolio from "./single-portfolio";
 import page from "./page";
 import single from "./single";
+import category from "./category";
+import frontPage from "./front-page";
+import pageServices from "./page-services";
+import singleService from "./single-service";
+import pagePortfolio from "./page-portfolio";
+import singlePortfolio from "./single-portfolio";
 
 export default {
   tag,
@@ -14,6 +15,7 @@ export default {
   category,
   "front-page": frontPage,
   "page-services": pageServices,
+  "single-service": singleService,
   "page-portfolio": pagePortfolio,
   "single-portfolio": singlePortfolio,
 };

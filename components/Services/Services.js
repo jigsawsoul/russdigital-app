@@ -32,6 +32,7 @@ Services.fragments = {
       nodes {
         title
         uri
+        excerpt
         featuredImage {
           node {
             sourceUrl
