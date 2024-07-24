@@ -3,28 +3,48 @@ import { useForm } from "react-hook-form";
 import { Button } from "../../components";
 
 export default function ContactForm() {
-  const year = new Date().getFullYear();
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    // Create a new FormData object
+    const formData = new FormData();
+    Object.keys(data).forEach((key) => {
+      formData.append(key, data[key]);
+    });
+
+    // Send the form data to Netlify
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      if (response.ok) {
+        console.log("Form successfully submitted");
+        // You can add additional actions here, such as redirecting to a thank you page
+      } else {
+        console.error("Form submission error");
+      }
+    } catch (error) {
+      console.error("Form submission error", error);
+    }
   };
 
   return (
     <form
-      name="contact"
-      data-netlify="true"
-      method="POST"
       className="font-normal"
       onSubmit={handleSubmit(onSubmit)}
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
     >
       <input type="hidden" name="form-name" value="contact" />
-
       <div className="flex flex-row flex-wrap -mx-4">
         <div className="w-full lg:w-1/2 px-2">
           <div className="mb-5">
