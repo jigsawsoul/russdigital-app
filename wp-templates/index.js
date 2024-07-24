@@ -1,6 +1,7 @@
 import category from "./category";
 import tag from "./tag";
 import frontPage from "./front-page";
+import pageServices from "./page-services";
 import pagePortfolio from "./page-portfolio";
 import singlePortfolio from "./single-portfolio";
 import page from "./page";
@@ -12,6 +13,7 @@ export default {
   single,
   category,
   "front-page": frontPage,
+  "page-services": pageServices,
   "page-portfolio": pagePortfolio,
   "single-portfolio": singlePortfolio,
 };

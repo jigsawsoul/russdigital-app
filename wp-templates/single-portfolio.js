@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 import * as MENUS from "../constants/menus";
-import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import { SeoMetaFragment } from "../fragments/SeoMeta";
+import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import {
   SEO,
   MobileMenu,

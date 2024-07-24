@@ -11,7 +11,7 @@ import {
   NavigationMenu,
   ContactSection,
   Hero,
-  Portfolio,
+  Services,
 } from "../components";
 
 export default function Component(props) {
@@ -21,8 +21,11 @@ export default function Component(props) {
   }
 
   const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
-  const { title, featuredImage, seo } = props?.data?.page ?? { title: "" };
-  const portfolioItems = props?.data?.allPortfolio?.nodes ?? [];
+  const { title, featuredImage, seo } = props?.data?.page ?? {
+    title: "",
+  };
+
+  const servicesItems = props?.data?.services?.nodes ?? [];
 
   return (
     <>
@@ -32,7 +35,7 @@ export default function Component(props) {
         <Header menuItems={primaryMenu} />
         <Main className="flex-grow">
           <Hero title={title} image={featuredImage?.node?.sourceUrl} />
-          <Portfolio items={portfolioItems}></Portfolio>
+          <Services items={servicesItems}></Services>
         </Main>
         <ContactSection />
         <Footer />
@@ -55,7 +58,7 @@ Component.query = gql`
   ${BlogInfoFragment}
   ${NavigationMenu.fragments.entry}
   ${Hero.fragments.entry}
-  ${Portfolio.fragments.entry}
+  ${Services.fragments.entry}
   query GetPageData(
     $databaseId: ID!
     $headerLocation: MenuLocationEnum
@@ -70,8 +73,8 @@ Component.query = gql`
         ...SeoMetaFragment
       }
     }
-    allPortfolio {
-      ...PortfolioFragment
+    services {
+      ...ServicesFragment
     }
     headerMenuItems: menuItems(where: { location: $headerLocation }) {
       nodes {

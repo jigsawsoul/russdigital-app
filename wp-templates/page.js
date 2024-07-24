@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 import * as MENUS from "../constants/menus";
-import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import { SeoMetaFragment } from "../fragments/SeoMeta";
+import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import {
   SEO,
   MobileMenu,
@@ -19,15 +19,12 @@ export default function Component(props) {
     return <>Loading...</>;
   }
 
-  const { title: siteTitle, description: siteDescription } =
-    props?.data?.generalSettings;
   const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
-  const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
   const { title, featuredImage, seo } = props?.data?.page ?? { title: "" };
 
   return (
     <>
-      <SEO title={seo?.title} description={siteDescription} />
+      <SEO title={seo?.title} description={seo?.metaDesc} />
       <MobileMenu menuItems={primaryMenu} />
       <div className="flex flex-col min-h-screen">
         <Header menuItems={primaryMenu} />
@@ -35,7 +32,7 @@ export default function Component(props) {
           <Hero title={title} image={featuredImage?.node?.sourceUrl} />
         </Main>
         <ContactSection />
-        <Footer title={siteTitle} menuItems={footerMenu} />
+        <Footer />
       </div>
     </>
   );
@@ -51,8 +48,8 @@ Component.variables = ({ databaseId }, ctx) => {
 };
 
 Component.query = gql`
-  ${BlogInfoFragment}
   ${SeoMetaFragment}
+  ${BlogInfoFragment}
   ${Hero.fragments.entry}
   ${NavigationMenu.fragments.entry}
   query GetPageData(
@@ -67,14 +64,6 @@ Component.query = gql`
       ...HeroFragment
       seo {
         ...SeoMetaFragment
-      }
-    }
-    generalSettings {
-      ...BlogInfoFragment
-    }
-    footerMenuItems: menuItems(where: { location: $footerLocation }) {
-      nodes {
-        ...NavigationMenuItemFragment
       }
     }
     headerMenuItems: menuItems(where: { location: $headerLocation }) {

@@ -4,7 +4,7 @@ import styles from "./Footer.module.scss";
 
 let cx = classNames.bind(styles);
 
-export default function Footer({ title, menuItems }) {
+export default function Footer() {
   const year = new Date().getFullYear();
 
   return (

@@ -25,3 +25,5 @@ export { PortfolioItem } from "./PortfolioItem";
 export { Breadcrumbs } from "./Breadcrumbs";
 export { SlickSlider } from "./SlickSlider";
 export { Content } from "./Content";
+export { Services } from "./Services";
+export { ServiceItem } from "./ServiceItem";
