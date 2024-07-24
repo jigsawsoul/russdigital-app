@@ -10,12 +10,21 @@ export default function ContactForm() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const onSubmit = (data) => {
     console.log(data);
   };
 
   return (
-    <form className="font-normal" onSubmit={handleSubmit(onSubmit)}>
+    <form
+      name="contact"
+      data-netlify="true"
+      method="POST"
+      className="font-normal"
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <input type="hidden" name="form-name" value="contact" />
+
       <div className="flex flex-row flex-wrap -mx-4">
         <div className="w-full lg:w-1/2 px-2">
           <div className="mb-5">
