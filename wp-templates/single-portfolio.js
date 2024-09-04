@@ -21,8 +21,6 @@ export default function Component(props) {
     return <>Loading...</>;
   }
 
-  const { title: siteTitle, description: siteDescription } =
-    props?.data?.generalSettings;
   const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
   const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
   const { title, content, seo } = props?.data?.portfolio ?? {
@@ -64,7 +62,7 @@ export default function Component(props) {
           </Container>
         </Main>
         <ContactSection />
-        <Footer title={siteTitle} menuItems={footerMenu} />
+        <Footer />
       </div>
     </>
   );
@@ -92,9 +90,6 @@ Component.query = gql`
       seo {
         ...SeoMetaFragment
       }
-    }
-    generalSettings {
-      ...BlogInfoFragment
     }
     headerMenuItems: menuItems(where: { location: $headerLocation }) {
       nodes {
