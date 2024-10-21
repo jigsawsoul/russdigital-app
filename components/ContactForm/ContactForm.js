@@ -108,7 +108,7 @@ export default function ContactForm() {
         </div>
       </div>
       <div className="-mx-2">
-        <Button>SEND MESSAGE</Button>
+        <Button className="bg-black text-white">SEND MESSAGE</Button>
       </div>
     </form>
   );

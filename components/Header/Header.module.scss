@@ -1,5 +1,13 @@
 @import 'styles/breakpoints';
 
+header.home:not(.scrolled) {
+	@apply bg-transparent text-white;
+
+	button {
+		@apply bg-white text-black;
+	}
+}
+
 .component {
 	color: var(--wpe--header--color);
 	background-color: var(--wpe--header--background-color);

@@ -15,6 +15,7 @@ export { NavigationMenuMobile } from "./NavigationMenuMobile";
 export { PostInfo } from "./PostInfo";
 export { SkipNavigationLink } from "./SkipNavigationLink";
 export { Hero } from "./Hero";
+export { HeroHome } from "./HeroHome";
 export { Post } from "./Post";
 export { SEO } from "./SEO";
 export { ContactSection } from "./ContactSection";

@@ -1,7 +1,17 @@
-export default function Button({ children, className }) {
+import Link from "next/link";
+
+export default function Button({ children, className, link }) {
   const defaultClasses =
-    "bg-black inline-block text-white font-title font-semibold text-sm px-10 py-[22px]";
+    "inline-block font-title font-semibold text-sm px-10 py-[22px]";
   const combinedClasses = `${defaultClasses} ${className}`;
+
+  if (link) {
+    return (
+      <Link href={link}>
+        <a className={combinedClasses}>{children}</a>
+      </Link>
+    );
+  }
 
   return (
     <button type="submit" className={combinedClasses}>
