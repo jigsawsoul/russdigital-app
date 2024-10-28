@@ -5,12 +5,11 @@ import { Button } from "../../components";
 export default function ContactForm() {
   const {
     register,
+    handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
+  const onSubmit = (event) => {
     const myForm = event.target;
     const formData = new FormData(myForm);
 
@@ -21,17 +20,18 @@ export default function ContactForm() {
     })
       .then(() => console.log("Form successfully submitted"))
       .catch((error) => alert(error));
-  };
 
-  document.querySelector("form").addEventListener("submit", handleSubmit);
+    event.preventDefault();
+  };
 
   return (
     <form
       className="font-normal"
+      onSubmit={handleSubmit(onSubmit)}
       name="contact"
       method="POST"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
+      netlify
+      netlify-honeypot="bot-field"
     >
       <input type="hidden" name="form-name" value="contact" />
       <div className="flex flex-row flex-wrap -mx-4">
