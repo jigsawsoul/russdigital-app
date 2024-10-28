@@ -21,7 +21,7 @@ export default function ContactForm() {
       .then(() => console.log("Form successfully submitted"))
       .catch((error) => alert(error));
 
-    event.preventDefault();
+    // event.preventDefault();
   };
 
   return (
