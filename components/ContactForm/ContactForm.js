@@ -5,39 +5,29 @@ import { Button } from "../../components";
 export default function ContactForm() {
   const {
     register,
-    handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data) => {
-    // Use URLSearchParams to convert form data to a format Netlify expects
-    const formData = new URLSearchParams();
-    Object.keys(data).forEach((key) => {
-      formData.append(key, data[key]);
-    });
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-    // Send the form data to Netlify with URLSearchParams as body
-    try {
-      const response = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: formData.toString(),
-      });
+    const myForm = event.target;
+    const formData = new FormData(myForm);
 
-      if (response.ok) {
-        console.log("Form successfully submitted");
-      } else {
-        console.error("Form submission error");
-      }
-    } catch (error) {
-      console.error("Form submission error", error);
-    }
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then(() => console.log("Form successfully submitted"))
+      .catch((error) => alert(error));
   };
+
+  document.querySelector("form").addEventListener("submit", handleSubmit);
 
   return (
     <form
       className="font-normal"
-      onSubmit={handleSubmit(onSubmit)}
       name="contact"
       method="POST"
       data-netlify="true"
@@ -107,7 +97,9 @@ export default function ContactForm() {
         </div>
       </div>
       <div className="-mx-2">
-        <Button className="bg-black text-white">SEND MESSAGE</Button>
+        <Button type="submit" className="bg-black text-white">
+          SEND MESSAGE
+        </Button>
       </div>
     </form>
   );
