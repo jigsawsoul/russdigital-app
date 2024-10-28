@@ -21,16 +21,13 @@ export default function ContactForm() {
     };
 
     try {
-      const response = await fetch(
-        "https://hooks.slack.com/services/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",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        }
-      );
+      const response = await fetch(process.env.SLACK_WEBHOOK, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
       if (response.ok) {
         console.log("Form successfully submitted to Slack");
