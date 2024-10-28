@@ -18,6 +18,11 @@ export default function ContactSection() {
               We are digital agency that helps businesses develop immersive and
               engaging user experiences
             </p>
+            <p className="lg:text-[18px] mb-4 space-x-4 flex">
+              <a href="tel:+447851780306">+44 7851 780306</a>
+              <span>&middot;</span>
+              <a href="mailto:info@russdigital.co.uk">info@russdigital.co.uk</a>
+            </p>
             <p className="lg:text-[18px]">
               Copyright © {year}{" "}
               <a href="mailto:info@russdigital.co.uk">RussDigital</a>

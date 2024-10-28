@@ -2,6 +2,7 @@ import page from "./page";
 import single from "./single";
 import category from "./category";
 import pageHome from "./page-home";
+import pageContact from "./page-contact";
 import pageServices from "./page-services";
 import singleService from "./single-service";
 import pagePortfolio from "./page-portfolio";
@@ -12,6 +13,7 @@ export default {
   single,
   category,
   "page-home": pageHome,
+  "page-contact": pageContact,
   "page-services": pageServices,
   "single-service": singleService,
   "page-portfolio": pagePortfolio,

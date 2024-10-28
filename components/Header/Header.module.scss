@@ -4,7 +4,11 @@ header.home:not(.scrolled) {
 	@apply bg-transparent text-white;
 
 	button {
-		@apply bg-white text-black;
+		@apply border-white;
+
+		> span {
+			@apply bg-white;
+		}
 	}
 }
 

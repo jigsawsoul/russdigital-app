@@ -57,7 +57,7 @@ export default function Header({ menuItems, type }) {
               aria-label="Toggle navigation"
               aria-controls="primary-navigation"
               aria-expanded={isNavShown}
-              className="lg:hidden group"
+              className={cx("lg:hidden group", { "is-scrolled": isScrolled })}
             >
               <span className="block h-[2px] w-[18px] bg-black transition-all"></span>
               <span className="block h-[2px] w-[18px] bg-black transition-all group-hover:w-3"></span>

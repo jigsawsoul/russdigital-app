@@ -14,9 +14,9 @@ export default function Services({ items, title = null }) {
   return (
     <section className="py-16 lg:py-24">
       <Container>
-        <div class="flex justify-center mb-8 lg:mb-12">
-          <div class="w-full md:w-8/12 xl:w-7/12 text-center">
-            <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-title font-semibold">
+        <div className="flex justify-center mb-8 lg:mb-12">
+          <div className="w-full md:w-8/12 xl:w-7/12 text-center">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-title font-semibold">
               {title}
             </h2>
           </div>

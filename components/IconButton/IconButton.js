@@ -1,4 +1,7 @@
-import classNames from "classnames";
+import styles from "./IconButton.module.scss";
+import classNames from "classnames/bind";
+
+let cx = classNames.bind(styles);
 
 export default function IconButton({
   type = "button",
@@ -8,10 +11,8 @@ export default function IconButton({
   ariaExpanded,
   className,
   children,
+  isScrolled = false,
 }) {
-  const sharedStyles =
-    "h-10 w-10 border-2 border-black flex flex-col rounded-full justify-center items-center gap-1";
-
   return (
     <button
       type={type}
@@ -19,7 +20,7 @@ export default function IconButton({
       aria-label={ariaLabel}
       aria-controls={ariaControls}
       aria-expanded={ariaExpanded}
-      className={classNames(sharedStyles, className)}
+      className={cx("icon-button", { "is-scrolled": isScrolled }, className)}
     >
       {children}
     </button>
