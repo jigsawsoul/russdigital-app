@@ -10,23 +10,22 @@ export default function ContactForm() {
   } = useForm();
 
   const onSubmit = async (data) => {
-    // Create a new FormData object
-    const formData = new FormData();
+    // Use URLSearchParams to convert form data to a format Netlify expects
+    const formData = new URLSearchParams();
     Object.keys(data).forEach((key) => {
       formData.append(key, data[key]);
     });
 
-    // Send the form data to Netlify
+    // Send the form data to Netlify with URLSearchParams as body
     try {
       const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString(),
+        body: formData.toString(),
       });
 
       if (response.ok) {
         console.log("Form successfully submitted");
-        // You can add additional actions here, such as redirecting to a thank you page
       } else {
         console.error("Form submission error");
       }
