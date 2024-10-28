@@ -11,17 +11,20 @@ export default function ContactForm() {
 
   const onSubmit = async (data) => {
     const payload = {
-      text: `
-        New Contact Form Submission:\n
-        Name: ${data.name}\n
-        Email: ${data.email}\n
-        Phone: ${data.phone || "N/A"}\n
-        Message: ${data.message}
-      `,
+      text: `New Contact Form Submission:\nName: ${data.name}\nEmail: ${
+        data.email
+      }\nPhone: ${data.phone || "N/A"}\nMessage: ${data.message}`,
     };
 
+    const webhookUrl = process.env.NEXT_PUBLIC_SLACK_WEBHOOK || "";
+    if (!webhookUrl) {
+      console.error("SLACK_WEBHOOK environment variable is not defined");
+      alert("There was an error submitting the form. Please try again later.");
+      return;
+    }
+
     try {
-      const response = await fetch(process.env.SLACK_WEBHOOK, {
+      const response = await fetch(webhookUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
