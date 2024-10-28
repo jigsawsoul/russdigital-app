@@ -6,20 +6,24 @@ const cx = classNames.bind(styles);
 
 export default function HeroHome({ title, image, type }) {
   return (
-    <div
-      className={cx("hero bg-cover overflow-hidden bg-gray-100 z-auto", type)}
-      style={{ backgroundImage: `url('${image}')` }}
-    >
+    <div className={cx("hero bg-black z-auto relative mt-[-106px]", type)}>
+      <div className="h-[350px] w-full lg:w-[80%] lg:h-auto lg:absolute top-0 right-0 bottom-0 text-right">
+        <img
+          src={image}
+          alt="Russ Digital - Creative Agency"
+          className="object-cover w-full h-full inline-block"
+        />
+      </div>
       <Container>
-        <div className="py-24 md:py-36 xl:py-44 flex flex-col max-w-screen-lg">
-          <h1 className="text-white font-title text-4xl md:text-6xl xl:text-[80px] font-semibold">
+        <div className="py-8 lg:py-36 xl:py-44 flex flex-col max-w-screen-lg relative z-400">
+          <h1 className="text-white font-title text-4xl md:text-6xl lg:text-[80px] font-semibold">
             {title}
           </h1>
-          <p class="font-body text-xl text-white mt-8 max-w-md">
+          <p className="font-body text-xl text-white mt-8 max-w-md">
             We are digital agency that helps businesses develop their brand and
             win customers.
           </p>
-          <div class="mt-8">
+          <div className="mt-8">
             <Button className="uppercase bg-[#E3FF04]">View our work</Button>
           </div>
         </div>
