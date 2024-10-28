@@ -4,7 +4,10 @@ export default function ContactSection() {
   const year = new Date().getFullYear();
 
   return (
-    <div className="py-16 lg:py-32 overflow-hidden bg-[#E3FF04] font-body text-center xl:text-left">
+    <div
+      id="work-together"
+      className="py-16 lg:py-32 overflow-hidden bg-[#E3FF04] font-body text-center xl:text-left"
+    >
       <Container>
         <div className="flex flex-col xl:flex-row justify-between">
           <div className="w-full xl:w-5/12 mb-12 xl:mb-0">

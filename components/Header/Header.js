@@ -23,14 +23,15 @@ export default function Header({ menuItems, type }) {
       }
     };
 
-    // Add scroll event listener
     window.addEventListener("scroll", handleScroll);
-
-    // Cleanup the event listener on component unmount
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const scrollToWorkTogether = () => {
+    document
+      .getElementById("work-together")
+      ?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <header
@@ -62,7 +63,10 @@ export default function Header({ menuItems, type }) {
               <span className="block h-[2px] w-[18px] bg-black transition-all group-hover:w-3"></span>
               <span className="block h-[2px] w-[18px] bg-black transition-all"></span>
             </IconButton>
-            <Button className="ml-10 uppercase hidden xl:block bg-black text-white">
+            <Button
+              className="ml-10 uppercase hidden xl:block bg-black text-white"
+              onClick={scrollToWorkTogether}
+            >
               Work with us
             </Button>
           </div>
