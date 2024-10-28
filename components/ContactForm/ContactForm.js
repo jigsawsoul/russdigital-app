@@ -10,32 +10,19 @@ export default function ContactForm() {
   } = useForm();
 
   const onSubmit = async (data) => {
-    const payload = {
-      text: `New Contact Form Submission:\nName: ${data.name}\nEmail: ${
-        data.email
-      }\nPhone: ${data.phone || "N/A"}\nMessage: ${data.message}`,
-    };
-
-    const webhookUrl = process.env.NEXT_PUBLIC_SLACK_WEBHOOK || "";
-    if (!webhookUrl) {
-      console.error("SLACK_WEBHOOK environment variable is not defined");
-      alert("There was an error submitting the form. Please try again later.");
-      return;
-    }
-
     try {
-      const response = await fetch(webhookUrl, {
+      const response = await fetch("/.netlify/functions/sendToSlack", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(data),
       });
 
       if (response.ok) {
-        console.log("Form successfully submitted to Slack");
+        console.log("Form successfully submitted");
       } else {
-        console.error("Failed to submit form to Slack");
+        console.error("Failed to submit form");
         alert(
           "There was an error submitting the form. Please try again later."
         );
