@@ -9,19 +9,41 @@ export default function ContactForm() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (event) => {
-    const myForm = event.target;
-    const formData = new FormData(myForm);
+  const onSubmit = async (data) => {
+    const payload = {
+      text: `
+        New Contact Form Submission:\n
+        Name: ${data.name}\n
+        Email: ${data.email}\n
+        Phone: ${data.phone || "N/A"}\n
+        Message: ${data.message}
+      `,
+    };
 
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then(() => console.log("Form successfully submitted"))
-      .catch((error) => alert(error));
+    try {
+      const response = await fetch(
+        "https://hooks.slack.com/services/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",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
 
-    // event.preventDefault();
+      if (response.ok) {
+        console.log("Form successfully submitted to Slack");
+      } else {
+        console.error("Failed to submit form to Slack");
+        alert(
+          "There was an error submitting the form. Please try again later."
+        );
+      }
+    } catch (error) {
+      console.error("Error submitting form: ", error);
+      alert("There was an error submitting the form. Please try again later.");
+    }
   };
 
   return (
@@ -29,16 +51,13 @@ export default function ContactForm() {
       className="font-normal"
       onSubmit={handleSubmit(onSubmit)}
       name="contact"
-      method="POST"
-      netlify
-      netlify-honeypot="bot-field"
     >
-      <input type="hidden" name="form-name" value="contact" />
       <div className="flex flex-row flex-wrap -mx-4">
         <div className="w-full lg:w-1/2 px-2">
           <div className="mb-5">
             <input
               type="text"
+              name="name"
               className="form-control style-border bg-transparent text-[18px] black border-b-2 border-black w-full placeholder-black h-14 outline-none"
               placeholder="Full name*"
               {...register("name", { required: "Full name is required" })}
@@ -54,6 +73,7 @@ export default function ContactForm() {
           <div className="mb-5">
             <input
               type="text"
+              name="email"
               className="form-control style-border bg-transparent text-[18px] black placeholder-black h-14 border-b-2 border-black w-full outline-none"
               placeholder="Email address*"
               {...register("email", {
@@ -75,15 +95,17 @@ export default function ContactForm() {
           <div className="mb-5">
             <input
               type="text"
+              name="phone"
               className="form-control style-border bg-transparent text-[18px] black placeholder-black h-14 border-b-2 border-black w-full outline-none autofill:bg-red-400"
               placeholder="Phone number"
-              {...register("number")}
+              {...register("phone")}
             />
           </div>
         </div>
         <div className="w-full px-2">
           <div className="mb-5">
             <textarea
+              name="message"
               placeholder="How Can We Help You*"
               className="form-control style-border bg-transparent text-[18px] black placeholder-black min-h-48 border-b-2 border-black w-full pt-4 outline-none"
               {...register("message", { required: "Message is required" })}
