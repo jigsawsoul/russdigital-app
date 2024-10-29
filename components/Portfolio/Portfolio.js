@@ -36,6 +36,11 @@ Portfolio.fragments = {
             altText
           }
         }
+        categories {
+          nodes {
+            name
+          }
+        }
       }
     }
   `,

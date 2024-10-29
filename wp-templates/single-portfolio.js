@@ -23,7 +23,8 @@ export default function Component(props) {
 
   const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
   const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
-  const { title, content, seo } = props?.data?.portfolio ?? {
+  const { title, content, gallery, categories, tags, seo } = props?.data
+    ?.portfolio ?? {
     title: "",
   };
 
@@ -37,7 +38,9 @@ export default function Component(props) {
           <Breadcrumbs items={seo?.breadcrumbs} />
           <Container>
             <div className="py-10 lg-py-14 xl:py-28">
-              <SlickSlider />
+              {gallery.gallery?.nodes.length > 0 && (
+                <SlickSlider gallery={gallery} />
+              )}
               <div className="py-10 flex flex-col lg:flex-row justify-between flex-wrap">
                 <div className="col-lg-8 lg:w-8/12">
                   <h1 className="font-title mb-4 text-3xl md:text-4xl lg:text-6xl font-semibold">
@@ -47,14 +50,42 @@ export default function Component(props) {
                 </div>
                 <div className="lg:w-4/12 xl:w-3/12">
                   <dl>
-                    <dt className="text-lg mb-1">Service:</dt>
-                    <dd className="font-title font-semibold mb-8">
-                      DEVELOPMENT
-                    </dd>
-                    <dt className="text-lg mb-1">Software:</dt>
-                    <dd className="font-title font-semibold mb-8">
-                      WORDPRESS, FIGMA
-                    </dd>
+                    {categories.nodes.length > 0 && (
+                      <>
+                        <dt className="text-lg mb-1">Service:</dt>
+                        <dd className="font-title font-semibold mb-8">
+                          {categories.nodes.map((category, index) => (
+                            <span
+                              className={`uppercase ${
+                                index !== categories.nodes.length - 1
+                                  ? "after:content-[',_']"
+                                  : ""
+                              }`}
+                            >
+                              {category.name}
+                            </span>
+                          ))}
+                        </dd>
+                      </>
+                    )}
+                    {tags.nodes.length > 0 && (
+                      <>
+                        <dt className="text-lg mb-1">Software:</dt>
+                        <dd className="font-title font-semibold mb-8">
+                          {tags.nodes.map((tag, index) => (
+                            <span
+                              className={`uppercase ${
+                                index !== tags.nodes.length - 1
+                                  ? "after:content-[',_']"
+                                  : ""
+                              }`}
+                            >
+                              {tag.name}
+                            </span>
+                          ))}
+                        </dd>
+                      </>
+                    )}
                   </dl>
                 </div>
               </div>
@@ -87,6 +118,24 @@ Component.query = gql`
     portfolio(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
       title
       content
+      gallery {
+        gallery {
+          nodes {
+            altText
+            sourceUrl
+          }
+        }
+      }
+      categories {
+        nodes {
+          name
+        }
+      }
+      tags {
+        nodes {
+          name
+        }
+      }
       seo {
         ...SeoMetaFragment
       }

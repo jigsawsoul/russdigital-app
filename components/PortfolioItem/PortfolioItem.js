@@ -21,11 +21,18 @@ export default function PortfolioItem({ item }) {
           </Link>
         </h3>
         <ul className="inline-flex font-body lg:text-lg">
-          <li className="inline-block mr-1 after:content-['_/_']">Branding</li>
-          <li className="inline-block mr-1 after:content-['_/_']">
-            Development
-          </li>
-          <li className="inline-block mr-1">Concept</li>
+          {item.categories.nodes.map((category, index) => (
+            <li
+              key={category.name}
+              className={`inline-block mr-1 ${
+                index !== item.categories.nodes.length - 1
+                  ? "after:content-['_/_']"
+                  : ""
+              }`}
+            >
+              {category.name}
+            </li>
+          ))}
         </ul>
       </div>
     </div>

@@ -6,7 +6,7 @@ const styles =
   "absolute top-1/2 z-10 bg-black size-16 xl:size-20 rounded-full -mt-8 xl:-mt-10 hidden md:flex justify-center items-center cursor-pointer";
 
 function NextArrow(props) {
-  const { className, style, onClick } = props;
+  const { onClick } = props;
 
   return (
     <div className={`${styles} right-10`} onClick={onClick}>
@@ -23,7 +23,7 @@ function NextArrow(props) {
 }
 
 function PrevArrow(props) {
-  const { className, style, onClick } = props;
+  const { onClick } = props;
 
   return (
     <div className={`${styles} left-10`} onClick={onClick}>
@@ -39,8 +39,8 @@ function PrevArrow(props) {
   );
 }
 
-export default function SlickSlider() {
-  var settings = {
+export default function SlickSlider({ gallery }) {
+  const settings = {
     dots: false,
     infinite: true,
     speed: 500,
@@ -52,26 +52,14 @@ export default function SlickSlider() {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
+
   return (
     <Slider {...settings}>
-      <div>
-        <img src="https://images.squarespace-cdn.com/content/v1/604ba44393c7f933b0030ed3/ed0c1532-1691-4be5-b582-7918704a61f6/MRHQ-1.jpg?format=2500w" />
-      </div>
-      <div>
-        <img src="https://images.squarespace-cdn.com/content/v1/604ba44393c7f933b0030ed3/37ec8ca4-c7ea-494c-9b83-0cb7266bd4c5/MRHQ-3.jpg?format=2500w" />
-      </div>
-      <div>
-        <img src="https://images.squarespace-cdn.com/content/v1/604ba44393c7f933b0030ed3/f2345ef6-c1bc-4e75-b0fb-ee79e247e5f9/MRHQ-2.jpg?format=2500w" />
-      </div>
-      <div>
-        <img src="https://images.squarespace-cdn.com/content/v1/604ba44393c7f933b0030ed3/ed0c1532-1691-4be5-b582-7918704a61f6/MRHQ-4.jpg?format=2500w" />
-      </div>
-      <div>
-        <img src="https://images.squarespace-cdn.com/content/v1/604ba44393c7f933b0030ed3/55cb3fa2-8ce5-459c-b769-5c99134f815d/MRHQ-8.jpg?format=2500w" />
-      </div>
-      <div>
-        <img src="https://images.squarespace-cdn.com/content/v1/604ba44393c7f933b0030ed3/a9bae3bb-129f-4027-816e-1a61cb4e5a11/MRHQ-9.jpg?format=2500w" />
-      </div>
+      {gallery?.gallery.nodes.map((image, index) => (
+        <div key={index}>
+          <img src={image.sourceUrl} alt={image.altText || "Gallery Image"} />
+        </div>
+      ))}
     </Slider>
   );
 }
