@@ -3,12 +3,12 @@ import { Container, ServiceItem } from "..";
 
 export default function Services({ items, title = null }) {
   const icons = [
-    "https://html.themegenix.com/frisk/assets/img/icon/feature-icon1-1.svg",
-    "https://html.themegenix.com/frisk/assets/img/icon/feature-icon1-2.svg",
-    "https://html.themegenix.com/frisk/assets/img/icon/feature-icon1-3.svg",
-    "https://html.themegenix.com/frisk/assets/img/icon/feature-icon1-4.svg",
-    "https://html.themegenix.com/frisk/assets/img/icon/feature-icon1-5.svg",
-    "https://html.themegenix.com/frisk/assets/img/icon/feature-icon1-6.svg",
+    "https://api.russdigital.co.uk/wp-content/uploads/2024/10/feature-icon1-1.svg",
+    "https://api.russdigital.co.uk/wp-content/uploads/2024/10/feature-icon1-2.svg",
+    "https://api.russdigital.co.uk/wp-content/uploads/2024/10/feature-icon1-3.svg",
+    "https://api.russdigital.co.uk/wp-content/uploads/2024/10/feature-icon1-4.svg",
+    "https://api.russdigital.co.uk/wp-content/uploads/2024/10/feature-icon1-5.svg",
+    "https://api.russdigital.co.uk/wp-content/uploads/2024/10/feature-icon1-6.svg",
   ];
 
   return (

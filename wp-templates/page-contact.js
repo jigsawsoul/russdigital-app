@@ -39,7 +39,7 @@ export default function Component(props) {
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div className="bg-[#F6F5F3] py-10 px-9 font-body flex flex-col space-y-4 h-full">
                   <img
-                    src="https://html.themegenix.com/frisk/assets/img/icon/location-pin-alt.svg"
+                    src="https://api.russdigital.co.uk/wp-content/uploads/2024/10/location-pin-alt.svg"
                     className="w-10 h-10 mb-8 md:mb-12"
                   />
                   <h2 className="font-title text-xl md:text-2xl font-bold">
@@ -49,7 +49,7 @@ export default function Component(props) {
                 </div>
                 <div className="bg-[#F6F5F3] py-10 px-9 font-body flex flex-col space-y-4 h-full">
                   <img
-                    src="https://html.themegenix.com/frisk/assets/img/icon/speech-bubble.svg"
+                    src="https://api.russdigital.co.uk/wp-content/uploads/2024/10/speech-bubble.svg"
                     className="w-10 h-10 mb-8 md:mb-12"
                   />
                   <h2 className="font-title text-xl md:text-2xl font-bold">
@@ -63,7 +63,7 @@ export default function Component(props) {
                 </div>
                 <div className="bg-[#F6F5F3] py-10 px-9 font-body flex flex-col space-y-4 h-full">
                   <img
-                    src="https://html.themegenix.com/frisk/assets/img/icon/phone.svg"
+                    src="https://api.russdigital.co.uk/wp-content/uploads/2024/10/phone.svg"
                     className="w-10 h-10 mb-8 md:mb-12"
                   />
                   <h2 className="font-title text-xl md:text-2xl font-bold">
