@@ -6,10 +6,10 @@ body {
     @apply antialiased text-[#0A0C00] mt-[88px] lg:mt-[106px];
 }
 
-// #nprogress .bar {
-//     background: #E3FF04 !important;
-// }
-
 #nprogress .spinner-icon {
     @apply hidden lg:block;
 }
+
+.animate__animated.animate__delay-1s {
+    animation-delay: calc(var(--animate-delay));
+} 

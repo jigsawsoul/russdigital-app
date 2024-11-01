@@ -6,6 +6,7 @@ import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import "@faustwp/core/dist/css/toolbar.css";
 import "../styles/global.scss";
+import "animate.css";
 
 const useRouteProgress = (router) => {
   useEffect(() => {
