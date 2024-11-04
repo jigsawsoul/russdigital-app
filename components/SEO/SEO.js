@@ -19,6 +19,17 @@ export default function SEO({ title, description, imageUrl, url }) {
   return (
     <>
       <Head>
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="https://api.russdigital.co.uk/wp-content/uploads/2024/11/favicon.png"
+        />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta
+          name="msapplication-TileImage"
+          content="https://api.russdigital.co.uk/wp-content/uploads/2024/11/ms-icon-144x144-1.png"
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
