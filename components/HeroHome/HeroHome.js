@@ -31,7 +31,9 @@ export default function HeroHome({ title, image, type }) {
           </Animate>
           <div className="mt-8">
             <Animate animationClass="animate__fadeIn animate__delay-2s">
-              <Button className="uppercase bg-[#E3FF04]">View our work</Button>
+              <Button link="/portfolio" className="uppercase bg-[#E3FF04]">
+                View our work
+              </Button>
             </Animate>
           </div>
         </div>
