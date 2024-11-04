@@ -39,12 +39,12 @@ export default function Component(props) {
                 <Image
                   src={featuredImage.node.sourceUrl}
                   alt={featuredImage.node.altText || title}
-                  className="w-full h-auto block mb-8 md:mb-12 lg:mb-20"
+                  className="w-full h-auto block"
                   width="1376"
                   height="743"
                 />
               )}
-              <div className="lg:w-8/12">
+              <div className="lg:w-8/12 mt-8 md:mt-12 lg:mt-20">
                 <h1 className="font-title mb-4 text-3xl md:text-4xl lg:text-6xl font-semibold">
                   {title}
                 </h1>
