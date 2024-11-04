@@ -54,9 +54,9 @@ export default function Header({ menuItems, type }) {
             <NavigationMenu className="hidden lg:block" menuItems={menuItems} />
             <IconButton
               onClick={toggleNav}
-              aria-label="Toggle navigation"
-              aria-controls="primary-navigation"
-              aria-expanded={isNavShown}
+              ariaLabel="Toggle navigation"
+              ariaControls="primary-navigation"
+              ariaExpanded={isNavShown}
               className={cx("lg:hidden group", { "is-scrolled": isScrolled })}
             >
               <span className="block h-[2px] w-[18px] bg-black transition-all"></span>
@@ -66,6 +66,7 @@ export default function Header({ menuItems, type }) {
             <Button
               className="ml-10 uppercase hidden xl:block bg-black text-white"
               onClick={scrollToWorkTogether}
+              ariaLabel="Work with us"
             >
               Work with us
             </Button>
