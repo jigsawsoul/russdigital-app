@@ -1,5 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
+import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 
 const styles =
@@ -57,7 +58,12 @@ export default function SlickSlider({ gallery }) {
     <Slider {...settings}>
       {gallery?.gallery.nodes.map((image, index) => (
         <div key={index}>
-          <img src={image.sourceUrl} alt={image.altText || "Gallery Image"} />
+          <Image
+            src={image.sourceUrl}
+            alt={image.altText || "Gallery Image"}
+            width="1376"
+            height="918"
+          />
         </div>
       ))}
     </Slider>

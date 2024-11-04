@@ -8,8 +8,8 @@ export default function ServiceItem({ item, icon }) {
         <Image
           src={icon}
           className="min-w-10 min-h-10"
-          width="40"
-          height="40"
+          width="80"
+          height="80"
           alt="Service Icon"
         />
       </div>

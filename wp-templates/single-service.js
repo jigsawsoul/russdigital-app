@@ -13,6 +13,7 @@ import {
   Container,
   Content,
 } from "../components";
+import Image from "next/image";
 
 export default function Component(props) {
   if (props.loading) {
@@ -35,10 +36,11 @@ export default function Component(props) {
           <Container>
             <div className="py-10 lg-py-14 xl:py-28 flex flex-col items-center">
               {featuredImage && featuredImage.node && (
-                <img
+                <Image
                   src={featuredImage.node.sourceUrl}
                   alt={featuredImage.node.altText || title}
                   className="w-full h-auto block mb-8 md:mb-12 lg:mb-20"
+                  layout="fill"
                 />
               )}
               <div className="lg:w-8/12">

@@ -3,13 +3,15 @@ import { Container, Button, Animate } from "..";
 import styles from "./HeroHome.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
+import Image from "next/image";
 
 export default function HeroHome({ title, image, type }) {
   return (
     <div className={cx("hero bg-black z-auto relative mt-[-106px]", type)}>
       <div className="h-[350px] w-full lg:w-[80%] lg:h-auto lg:absolute top-0 right-0 bottom-0 text-right">
-        <img
+        <Image
           src={image}
+          layout="fill"
           alt="Russ Digital - Creative Agency"
           className="object-cover w-full h-full inline-block"
         />

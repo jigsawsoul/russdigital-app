@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function PortfolioItem({ item }) {
   return (
@@ -6,10 +7,12 @@ export default function PortfolioItem({ item }) {
       <Link href={item.uri ?? ""}>
         <a className="block">
           {item.featuredImage && item.featuredImage.node && (
-            <img
+            <Image
               src={item.featuredImage.node.sourceUrl}
               alt={item.featuredImage.node.altText || item.title}
               className="w-full h-auto block"
+              height="499"
+              width="659"
             />
           )}
         </a>
